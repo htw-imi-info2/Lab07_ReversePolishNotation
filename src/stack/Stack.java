@@ -8,6 +8,6 @@ public interface Stack<E> {
 
 	public void push(E element);
 
-	public void pop() throws Underflow;
+	public E pop() throws Underflow;
 
 }
