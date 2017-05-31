@@ -46,13 +46,11 @@ public class CustomLinkedList<E> {
 
 		Node<E> current = first;
 
-		if (current.getNext() != null) {
-			while (current.getNext().getNext() != null) {
-				current = current.getNext();
-			}
+		while (current.getNext().getNext() != null) {
+			current = current.getNext();
 		}
-		
-		E lastElement = current.getData();
+
+		E lastElement = current.getNext().getData();
 		last = current;
 		current.setNext(null);
 		return lastElement;

@@ -217,30 +217,6 @@ public class StackTest {
 		assertTrue(stack.isEmpty());
 	}
 	
-	/**
-	 * Characterization Test that shows bug in Stack implementation
-	 * @throws Underflow
-	 */
-	@Test 
-	public void popValueX() throws Underflow {
-		stack.push("a");
-		stack.push("b");
-		assertEquals("a",stack.pop());
-		assertEquals("a",stack.pop());
-		assertTrue(stack.isEmpty());
-	}
-	/**
-	 * Characterization Test that shows bug in Stack implementation
-	 * @throws Underflow
-	 */
-	@Test 
-	public void popValueXX() throws Underflow {
-		stack.push("a");
-		stack.push("b");
-		stack.push("c");
-		assertEquals("b",stack.pop());
-		assertEquals("a",stack.pop());
-		assertEquals("a",stack.pop());
-		assertTrue(stack.isEmpty());
-	}
+	
+
 }
