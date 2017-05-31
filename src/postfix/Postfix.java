@@ -31,7 +31,8 @@ public class Postfix {
 
 					while (!stack.isEmpty()) {
 						if (priority(stack.top()) >= priority(c)) {
-							outputString += stack.pop() + " ";
+							outputString += stack.top() + " ";
+							stack.pop();
 						} else {
 							break;
 						}
@@ -43,13 +44,15 @@ public class Postfix {
 
 			if (c == ')') {
 				while (!stack.isEmpty() && stack.top() != '(') {
-					outputString += stack.pop() + " ";
+					outputString += stack.top() + " ";
+					stack.pop();
 				}
 				stack.pop();
 			}
 		}
 		while (!stack.isEmpty()) {
-			outputString += stack.pop() + " ";
+			outputString += stack.top() + " ";
+			stack.pop();
 		}
 		System.out.println(outputString);
 		return outputString.substring(0, outputString.length() - 1);
@@ -65,8 +68,8 @@ public class Postfix {
 			}
 			if (isOperator(c)) {
 				double right, left, result = 0;
-				right = stack.pop();
-				left = stack.pop();
+				right = stack.top();stack.pop();
+				left = stack.top();stack.pop();
 
 				if (c == '+') {
 					result = left + right;

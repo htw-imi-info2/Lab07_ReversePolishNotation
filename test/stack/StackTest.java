@@ -1,6 +1,7 @@
 package stack;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +38,7 @@ public class StackTest {
 		stack.pop();
 		assertEquals("a", stack.toString());
 	}
+
 	@Test
 	public void testPop2() throws Underflow {
 		stack.push("a");
@@ -45,6 +47,7 @@ public class StackTest {
 		stack.pop();
 		assertEquals("b, a", stack.toString());
 	}
+
 	/**
 	 * Axiom 1: isEmpty(new Stack()) = true
 	 */
@@ -125,4 +128,119 @@ public class StackTest {
 		assertEquals(x, stack.top());
 	}
 
+	@Test
+	public void stepByStep1() throws Underflow {
+		stack.push("a");
+		assertEquals("a", stack.top());
+		stack.pop();
+		assertTrue(stack.isEmpty());
+	}
+
+	@Test
+	public void stepByStep2() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		assertEquals("b", stack.top());
+		stack.pop();
+		assertEquals("a", stack.top());
+		stack.pop();
+		assertTrue(stack.isEmpty());
+	}
+
+	@Test
+	public void stepByStep3() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		stack.push("c");
+		assertEquals("c", stack.top());
+		stack.pop();
+		assertEquals("b", stack.top());
+		stack.pop();
+		assertEquals("a", stack.top());
+		stack.pop();
+		assertTrue(stack.isEmpty());
+	}
+
+	@Test
+	public void stepByStep4() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		assertEquals("b", stack.top());
+		stack.pop();
+		stack.push("c");
+		assertEquals("c", stack.top());
+		stack.pop();
+		stack.push("d");
+		assertEquals("d", stack.top());
+		stack.pop();
+		assertEquals("a", stack.top());
+		stack.pop();
+		assertTrue(stack.isEmpty());
+	}
+
+	@Test
+	public void stepByStep5() throws Underflow {
+		stack.push("b");
+		assertEquals("b", stack.top());
+		stack.pop();
+		stack.push("c");
+		assertEquals("c", stack.top());
+		stack.pop();
+		stack.push("d");
+		assertEquals("d", stack.top());
+		stack.pop();
+		assertTrue(stack.isEmpty());
+	}
+	@Test 
+	public void popValue() throws Underflow {
+		stack.push("a");
+		assertEquals("a",stack.pop());
+		assertTrue(stack.isEmpty());
+	}
+	@Test 
+	public void popValue2() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		assertEquals("b",stack.pop());
+		assertEquals("a",stack.pop());
+		assertTrue(stack.isEmpty());
+	}
+	
+	@Test 
+	public void popValue3() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		stack.push("c");
+		assertEquals("c",stack.pop());
+		assertEquals("b",stack.pop());
+		assertEquals("a",stack.pop());
+		assertTrue(stack.isEmpty());
+	}
+	
+	/**
+	 * Characterization Test that shows bug in Stack implementation
+	 * @throws Underflow
+	 */
+	@Test 
+	public void popValueX() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		assertEquals("a",stack.pop());
+		assertEquals("a",stack.pop());
+		assertTrue(stack.isEmpty());
+	}
+	/**
+	 * Characterization Test that shows bug in Stack implementation
+	 * @throws Underflow
+	 */
+	@Test 
+	public void popValueXX() throws Underflow {
+		stack.push("a");
+		stack.push("b");
+		stack.push("c");
+		assertEquals("b",stack.pop());
+		assertEquals("a",stack.pop());
+		assertEquals("a",stack.pop());
+		assertTrue(stack.isEmpty());
+	}
 }

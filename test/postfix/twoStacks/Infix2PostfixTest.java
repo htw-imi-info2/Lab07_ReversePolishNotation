@@ -1,4 +1,4 @@
-package postfix.librarystack;
+package postfix.twoStacks;
 
 import static org.junit.Assert.assertEquals;
 
