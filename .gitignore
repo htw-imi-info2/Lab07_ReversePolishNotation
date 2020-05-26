@@ -1,2 +1,4 @@
 *.class
 /bin
+.idea/**/codeStyles
+.idea/**/workspace.xml
